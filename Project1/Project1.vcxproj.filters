@@ -18,9 +18,6 @@
     <ClCompile Include="root.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="display_ChoosingAmapOrSaving.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib.h">
@@ -38,7 +35,10 @@
     <ClInclude Include="Button.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="display_ChoosingAmapOrSaving.h">
+    <ClInclude Include="SmallWindows.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="obj.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

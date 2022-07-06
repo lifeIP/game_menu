@@ -1,10 +1,9 @@
 #include <iostream>
 #include "lib.h"
-#include "HomeScreen.h"
-#include "Button.h"
-#include "display_ChoosingAmapOrSaving.h"
+#include "obj.h"
 
 void home_screen(sf::RenderWindow* window, HomeScreen* home, flags* f_load);
+void screen_start_game(sf::RenderWindow* window, SmallWindows* smal_w);
 void buttons(sf::RenderWindow* window, Button* button, sf::Vector2f* button_pos, sf::Vector2u* button_size, const std::string& text);
 int main() {
 	flags f_load; /*loading flag*/
@@ -15,10 +14,12 @@ int main() {
 	bool del = false;
 	//warehouse of objects+
 	HomeScreen home(&window);
+	SmallWindows s_window(&window);
 	Button start_game(&window, &f_load, 0);
 	Button settings(&window, &f_load, 1);
 	Button shop(&window, &f_load, 2);
 	Button exit(&window, &f_load, 3);
+	
 	//warehouse of objects-
 	while (window.isOpen()) {
 		sf::Event some_event;
@@ -71,18 +72,25 @@ int main() {
 		window.clear(sf::Color::Black);
 		//Place for the rendering function+
 		home_screen(&window, &home, &f_load);
-		if (!del) {
-			buttons(&window, &start_game, &sf::Vector2f(60, 60), &sf::Vector2u(400, 65), "start game");
-			buttons(&window, &settings, &sf::Vector2f(60, 130), &sf::Vector2u(400, 65), "settings");
-		}
+		
+		buttons(&window, &start_game, &sf::Vector2f(60, 60), &sf::Vector2u(400, 65), "start game");
+		buttons(&window, &settings, &sf::Vector2f(60, 130), &sf::Vector2u(400, 65), "settings");
+		
 		buttons(&window, &shop, &sf::Vector2f(60, 200), &sf::Vector2u(400, 65), "shop");
 		buttons(&window, &exit, &sf::Vector2f(60, 270), &sf::Vector2u(400, 65), "exit");
-
+		screen_start_game(&window, &s_window);
 		//Place for the rendering function-
 		window.display();
 	}
 }
-void buttons(sf::RenderWindow* window, Button* button, sf::Vector2f *button_pos, sf::Vector2u *button_size, const std::string& text){
+void screen_start_game(sf::RenderWindow* window, SmallWindows* smal_w) {
+	smal_w->set_color_head(&sf::Color::Color(79, 79, 79, 255));
+	smal_w->set_screen_pos(&sf::Vector2f(500, 60));
+	smal_w->set_screen_size(&sf::Vector2u(500, 500));
+	smal_w->head();
+	window->draw(*smal_w);
+}
+void buttons(sf::RenderWindow* window, Button* button, sf::Vector2f* button_pos, sf::Vector2u* button_size, const std::string& text) {
 	button->set_button_pos(button_pos);
 	button->set_button_size(button_size);
 	button->set_text(text);

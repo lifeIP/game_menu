@@ -142,16 +142,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="display_ChoosingAmapOrSaving.cpp" />
     <ClCompile Include="root.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Button.h" />
-    <ClInclude Include="display_ChoosingAmapOrSaving.h" />
     <ClInclude Include="flags.h" />
     <ClInclude Include="HomeScreen.h" />
     <ClInclude Include="LandscapeGenerator.h" />
     <ClInclude Include="lib.h" />
+    <ClInclude Include="obj.h" />
+    <ClInclude Include="SmallWindows.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="source.png" />
