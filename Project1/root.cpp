@@ -87,7 +87,9 @@ void screen_start_game(sf::RenderWindow* window, SmallWindows* smal_w) {
 	smal_w->set_color_head(&sf::Color::Color(79, 79, 79, 255));
 	smal_w->set_screen_pos(&sf::Vector2f(500, 60));
 	smal_w->set_screen_size(&sf::Vector2u(500, 500));
+	smal_w->set_text_head("Select map");
 	smal_w->head();
+	smal_w->body();
 	window->draw(*smal_w);
 }
 void buttons(sf::RenderWindow* window, Button* button, sf::Vector2f* button_pos, sf::Vector2u* button_size, const std::string& text) {
