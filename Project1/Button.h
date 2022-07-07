@@ -2,13 +2,13 @@
 class Button: public sf::Drawable
 {
 	sf::Vector2i mouse_pos;
-	sf::Vector2u offset;//done
-	sf::Vector2f button_pos;//done
-	sf::Vector2u button_size;//done
-	std::vector<unsigned int>rgba;//done
-	std::vector<unsigned int>rgba_text;//done
-	flags* f_load;
-	int button_number;//done
+	sf::Vector2u offset;
+	sf::Vector2f button_pos;
+	sf::Vector2u button_size;
+	std::vector<unsigned int>rgba;
+	std::vector<unsigned int>rgba_text;
+	bool *f_lag;
+	int button_number;
 	bool a1;
 	unsigned short font_size;
 public:
@@ -54,14 +54,14 @@ public:
 	sf::Vector2u get_button_size() const {
 		return button_size;
 	}
-	Button(sf::RenderWindow* window, flags* f_load, int button_number) {
+	Button(sf::RenderWindow* window, bool* f_lag, int button_number) {
 		this->window = window;
 		button_pos = sf::Vector2f(window->getSize().x/2, window->getSize().y / 2);
 		button_size = sf::Vector2u(400, 65);
 		this->button_number = button_number;
 		rgba = { 0,0,100,80 };
 		rgba_text = { 0,0,0,255 };
-		this->f_load = f_load;
+		this->f_lag = f_lag;
 		font.loadFromFile("001.ttf");
 		text.setFont(font);
 		font_size = 24;
@@ -81,13 +81,13 @@ public:
 			rgba = { 100,0, 0, 80 };
 			a1 = true;
 			config_button_pos_size_texture_config();
-			f_load->b[button_number].b0 = true;
+			f_lag[button_number] = true;
 		}
 		else {
 			if (a1) {
 				rgba = { 0,0,100,80 };
 				config_button_pos_size_texture_config();
-				f_load->b[button_number].b0 = false;
+				f_lag[button_number] = false;
 				a1 = false;
 			}
 		}
